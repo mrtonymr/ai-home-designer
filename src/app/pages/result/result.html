@@ -1,0 +1,32 @@
+<section class="result-container" *ngIf="plan">
+
+  <div class="result-header">
+    <h2>Your Dream Home Plan</h2>
+
+    <div class="actions">
+      <button (click)="goBack()" class="back-btn">
+        ← Redesign
+      </button>
+
+      <button (click)="goHome()" class="home-btn">
+        Home
+      </button>
+    </div>
+  </div>
+
+  <p class="summary">
+    <strong>Total Area:</strong> {{ plan.ai_generated_total }} sq ft
+  </p>
+
+  <div class="room-grid">
+    <div class="room-card" *ngFor="let room of plan.rooms">
+      <h4>{{ room.name }}</h4>
+      <p>{{ room.area }} sq ft</p>
+    </div>
+  </div>
+
+</section>
+
+<div *ngIf="!plan" class="no-data">
+  No plan found. Please generate a new design.
+</div>
